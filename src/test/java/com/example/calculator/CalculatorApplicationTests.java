@@ -1,17 +1,20 @@
 package com.example.calculator;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class CalculatorApplicationTests {
 
-	private CalculatorService calculator = new CalculatorService();
-	@org.junit.Test
-	public void testSum() {
-		assertEquals(5, calculator.sum(2, 3));
-	}
+    @Autowired
+    private CalculatorService calculatorService;
 
+    @Test
+    public void testSum() {
+        int result = calculatorService.sum(2, 3);
+        assertEquals(5, result);
+    }
 }
